@@ -14,10 +14,16 @@ const BoardView = (props: Props) => {
       >
         Open drawer
       </label> */}
+
       <CategoryColumn />
       <CategoryColumn />
       <CategoryColumn />
       <CategoryColumn />
+      <div className="card bg-base-100 shadow-lg compact min-w-[20rem] glass">
+        <div className="card-body grid place-items-center">
+          <h1 className="text-xl font-bold">New Column</h1>
+        </div>
+      </div>
     </section>
   );
 };

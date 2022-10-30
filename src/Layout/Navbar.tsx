@@ -5,7 +5,7 @@ type Props = {};
 
 const Navbar = (props: Props) => {
   return (
-    <div className="w-full navbar bg-base-300">
+    <div className="w-full navbar bg-base-200">
       <div className="flex-none lg:hidden">
         <label htmlFor="site-drawer" className="btn btn-square btn-ghost">
           <svg

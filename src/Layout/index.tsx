@@ -11,9 +11,11 @@ const Layout = (props: Props) => {
     <>
       <div className="drawer drawer-mobile">
         <input id="site-drawer" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-center">
-          {props.children}
+        <div className="drawer-content flex flex-col items-center bg-base-300">
           <Navbar />
+          <div className="w-full h-full container overflow-x-scroll my-3">
+            {props.children}
+          </div>
         </div>
         <Drawer />
       </div>

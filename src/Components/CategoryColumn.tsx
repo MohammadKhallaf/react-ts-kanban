@@ -12,6 +12,7 @@ const CategoryColumn = (props: Props) => {
         <TaskCard />
         <TaskCard />
         <TaskCard />
+        <TaskCard />
       </div>
     </article>
   );

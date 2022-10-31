@@ -1,5 +1,6 @@
 import React from "react";
 import Drawer from "./Drawer";
+import Footer from "./Footer";
 import Navbar from "./Navbar";
 
 type Props = {
@@ -16,7 +17,9 @@ const Layout = (props: Props) => {
           <div className="w-full h-full container overflow-x-scroll my-3">
             {props.children}
           </div>
+          <Footer />
         </div>
+
         <Drawer />
       </div>
     </>

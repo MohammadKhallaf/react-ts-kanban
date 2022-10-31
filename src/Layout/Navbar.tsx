@@ -35,9 +35,14 @@ const Navbar = (props: Props) => {
           </li>
         </ul>
       </div>
-      {/* <div className=""> */}
-      <button className="btn btn-ghost">add new task</button>
-      {/* </div> */}
+
+      <label
+        htmlFor="create-task-modal"
+        className="cursor-pointer btn rounded-full my-0 py-0"
+      >
+        add new task
+      </label>
+
       <div className="flex-none">
         <button className="btn btn-square btn-ghost">
           <svg

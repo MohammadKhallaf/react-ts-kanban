@@ -1,9 +1,14 @@
 import React from "react";
+import { createBoard } from "../app/slices/boardSlice";
+import { useAppDispatch, useAppSelector } from "../app/store";
 import DarkToggle from "./DarkToggle";
 
 type Props = {};
 
 const Drawer = (props: Props) => {
+  const dispatch = useAppDispatch();
+  const boardsList = useAppSelector((state) => state.board.boards);
+
   return (
     <aside className="drawer-side">
       <label htmlFor="site-drawer" className="drawer-overlay"></label>
@@ -24,6 +29,11 @@ const Drawer = (props: Props) => {
         <ul>
           {/* <!-- Sidebar content here --> */}
           <li>All Boards (8)</li>
+          {boardsList.map((board) => (
+            <li key={board.id}>
+              <a>{board.title}</a>
+            </li>
+          ))}
           <li>
             <a>Planning</a>
           </li>
@@ -33,7 +43,7 @@ const Drawer = (props: Props) => {
           <li>
             <a>Roadmap</a>
           </li>
-          <li className="text-red-800">
+          <li className="text-red-800" onClick={() => dispatch(createBoard())}>
             <a className="active">
               <b>+</b> create new board
             </a>

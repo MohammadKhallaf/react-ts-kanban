@@ -1,8 +1,12 @@
 import React from "react";
+import { toggleDark } from "../app/slices/layoutSlice";
+import { useAppDispatch, useAppSelector } from "../app/store";
 
 type Props = {};
 
 const DarkToggle = (props: Props) => {
+  const dispatch = useAppDispatch();
+  const darkMode = useAppSelector((state) => state.layout.dark);
   return (
     <div className="form-control mt-auto mx-5 flex flex-row justify-around items-center">
       <span className="label-text">
@@ -15,7 +19,12 @@ const DarkToggle = (props: Props) => {
         </svg>
       </span>
       <label className="label cursor-pointer">
-        <input type="checkbox" className="toggle" />
+        <input
+          type="checkbox"
+          className="toggle"
+          checked={darkMode}
+          onChange={() => dispatch(toggleDark())}
+        />
       </label>
       <span className="label-text">
         <svg

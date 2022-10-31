@@ -18,7 +18,11 @@ const CreateTaskModal = (props: Props) => {
             ✕
           </label>
 
-          <form action="" className="mx-auto">
+          <form
+            action=""
+            className="mx-auto"
+            onSubmit={(e) => e.preventDefault()}
+          >
             <div className="form-control w-full">
               <label className="label">
                 <span className="label-text">Task Title</span>
@@ -46,7 +50,7 @@ const CreateTaskModal = (props: Props) => {
                 <SubTaskCheckBox />
                 <SubTaskCheckBox />
                 <SubTaskCheckBox />
-                <button className="btn btn-active btn-primary">
+                <button className="btn btn-active btn-primary" type="button">
                   Add New Subtask
                 </button>
               </div>

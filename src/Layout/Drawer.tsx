@@ -1,5 +1,6 @@
 import React from "react";
 import { createBoard } from "../app/slices/boardSlice";
+import { setBoard } from "../app/slices/layoutSlice";
 import { useAppDispatch, useAppSelector } from "../app/store";
 import DarkToggle from "./DarkToggle";
 
@@ -28,21 +29,16 @@ const Drawer = (props: Props) => {
         </span>
         <ul>
           {/* <!-- Sidebar content here --> */}
-          <li>All Boards (8)</li>
+          <li>All Boards ({boardsList.length})</li>
           {boardsList.map((board) => (
-            <li key={board.id}>
+            <li
+              key={board.id}
+              data-id={board.id}
+              onClick={() => dispatch(setBoard(board))}
+            >
               <a>{board.title}</a>
             </li>
           ))}
-          <li>
-            <a>Planning</a>
-          </li>
-          <li>
-            <a>Studing</a>
-          </li>
-          <li>
-            <a>Roadmap</a>
-          </li>
           <li className="text-red-800" onClick={() => dispatch(createBoard())}>
             <a className="active">
               <b>+</b> create new board

@@ -1,9 +1,12 @@
 import React from "react";
+import { useAppSelector } from "../app/store";
 import BoardView from "../Views/BoardView";
 
 type Props = {};
 
 const Navbar = (props: Props) => {
+  const boardTitle = useAppSelector((state) => state.layout.board.title);
+
   return (
     <div className="w-full navbar bg-base-200">
       <div className="flex-none lg:hidden">
@@ -23,10 +26,12 @@ const Navbar = (props: Props) => {
           </svg>
         </label>
       </div>
-      <h1 className="flex-1 px-2 mx-2 text-lg font-bold">Board Title</h1>
-      <div className="flex-none hidden lg:block">
+      <h1 className="flex-1 px-2 mx-2 text-lg font-bold uppercase">
+        {boardTitle}
+      </h1>
+      {/* <div className="flex-none hidden lg:block">
         <ul className="menu menu-horizontal">
-          {/* <!-- Navbar menu content here --> */}
+
           <li>
             <a>Navbar Item 1</a>
           </li>
@@ -34,7 +39,7 @@ const Navbar = (props: Props) => {
             <a>Navbar Item 2</a>
           </li>
         </ul>
-      </div>
+      </div> */}
 
       <label
         htmlFor="create-task-modal"
@@ -43,7 +48,7 @@ const Navbar = (props: Props) => {
         add new task
       </label>
 
-      <div className="flex-none">
+      {/* <div className="flex-none">
         <button className="btn btn-square btn-ghost">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +64,7 @@ const Navbar = (props: Props) => {
             ></path>
           </svg>
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

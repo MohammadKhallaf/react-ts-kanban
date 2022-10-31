@@ -42,7 +42,7 @@ const initialState: AppState = {
     },
     {
       id: nanoid(),
-      title: "Planning",
+      title: "Management",
       categories: [],
     },
   ],

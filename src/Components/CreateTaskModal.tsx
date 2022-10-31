@@ -55,8 +55,8 @@ const CreateTaskModal = (props: Props) => {
               <label className="label">
                 <span className="label-text">Task Category</span>
               </label>
-              <select className="select select-primary w-full">
-                <option disabled selected>
+              <select className="select select-primary w-full" defaultValue={1}>
+                <option disabled value={1}>
                   What is the best TV show?
                 </option>
                 <option>Game of Thrones</option>

@@ -39,8 +39,11 @@ const TaskModal = (props: Props) => {
               <label className="label">
                 <span className="label-text">Status</span>
               </label>
-              <select className="select select-primary w-full max-w-xs">
-                <option disabled selected>
+              <select
+                className="select select-primary w-full max-w-xs"
+                defaultValue="1"
+              >
+                <option disabled value="1">
                   What is the best TV show?
                 </option>
                 <option>Game of Thrones</option>

@@ -23,6 +23,7 @@ export interface Board {
   id: number | string;
   title: string;
   categories: Category[];
+  createdAt: String;
 }
 
 export interface AppState {
@@ -34,16 +35,19 @@ const initialState: AppState = {
       id: nanoid(),
       title: "Planning",
       categories: [],
+      createdAt: new Date().toISOString(),
     },
     {
       id: nanoid(),
       title: "Roadmap",
       categories: [],
+      createdAt: new Date().toISOString(),
     },
     {
       id: nanoid(),
       title: "Management",
       categories: [],
+      createdAt: new Date().toISOString(),
     },
   ],
 };
@@ -52,6 +56,7 @@ const newBoard = (title = "newboard") => ({
   id: nanoid(),
   title: title,
   categories: [],
+  createdAt: new Date().toISOString(),
 });
 
 export const boardSlice = createSlice({
@@ -60,6 +65,19 @@ export const boardSlice = createSlice({
   reducers: {
     createBoard: (state) => {
       state.boards.push(newBoard());
+    },
+    updateBoard: (
+      state,
+      action: PayloadAction<Partial<Board> & { id: number | string }>
+    ) => {
+      const boardIdx = state.boards.findIndex(
+        (board) => board.id === action.payload.id
+      );
+
+      state.boards[boardIdx] = {
+        ...state.boards[boardIdx],
+        ...action.payload,
+      };
     },
   },
 });
@@ -92,6 +110,6 @@ export const boardSlice = createSlice({
 // })
 
 // // Action creators are generated for each case reducer function
-export const { createBoard } = boardSlice.actions;
+export const { createBoard, updateBoard } = boardSlice.actions;
 
 export default boardSlice.reducer;

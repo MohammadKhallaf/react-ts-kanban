@@ -1,56 +1,33 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { Task } from "./taskSlice";
+import { Category } from "./categorySlice";
 
-export interface Subtask {
-  id: number | string;
-  title: string;
-}
-
-export interface Task {
-  id: number | string;
-  title: string;
-  description: string;
-  category: string;
-  subtasks: Subtask[];
-}
-
-export interface Category {
-  id: number | string;
-  title: string;
-  tasks: Task[];
-}
 export interface Board {
   id: number | string;
   title: string;
-  categories: Category[];
   createdAt: String;
 }
 
-export interface AppState {
-  boards: Board[];
-}
-const initialState: AppState = {
-  boards: [
-    {
-      id: nanoid(),
-      title: "Planning",
-      categories: [],
-      createdAt: new Date().toISOString(),
-    },
-    {
-      id: nanoid(),
-      title: "Roadmap",
-      categories: [],
-      createdAt: new Date().toISOString(),
-    },
-    {
-      id: nanoid(),
-      title: "Management",
-      categories: [],
-      createdAt: new Date().toISOString(),
-    },
-  ],
-};
+export type AppState = Board[];
+
+const initialState: AppState = [
+  {
+    id: nanoid(),
+    title: "Planning",
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: nanoid(),
+    title: "Roadmap",
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: nanoid(),
+    title: "Management",
+    createdAt: new Date().toISOString(),
+  },
+];
 
 const newBoard = (title = "newboard") => ({
   id: nanoid(),
@@ -64,18 +41,18 @@ export const boardSlice = createSlice({
   initialState,
   reducers: {
     createBoard: (state) => {
-      state.boards.push(newBoard());
+      state.push(newBoard());
     },
     updateBoard: (
       state,
       action: PayloadAction<Partial<Board> & { id: number | string }>
     ) => {
-      const boardIdx = state.boards.findIndex(
+      const boardIdx = state.findIndex(
         (board) => board.id === action.payload.id
       );
 
-      state.boards[boardIdx] = {
-        ...state.boards[boardIdx],
+      state[boardIdx] = {
+        ...state[boardIdx],
         ...action.payload,
       };
     },

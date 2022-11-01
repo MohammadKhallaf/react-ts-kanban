@@ -2,13 +2,14 @@ import React from "react";
 import { createBoard } from "../app/slices/boardSlice";
 import { setBoard } from "../app/slices/layoutSlice";
 import { useAppDispatch, useAppSelector } from "../app/store";
+import BoardList from "../Components/BoardList";
 import DarkToggle from "./DarkToggle";
 
 type Props = {};
 
 const Drawer = (props: Props) => {
-  const dispatch = useAppDispatch();
-  const boardsList = useAppSelector((state) => state.board.boards);
+ 
+  
 
   return (
     <aside className="drawer-side">
@@ -27,24 +28,7 @@ const Drawer = (props: Props) => {
 
           <h1 className="ml-3 my-3 text-lg font-bold">Kanban Site</h1>
         </span>
-        <ul>
-          {/* <!-- Sidebar content here --> */}
-          <li>All Boards ({boardsList.length})</li>
-          {boardsList.map((board) => (
-            <li
-              key={board.id}
-              data-id={board.id}
-              onClick={() => dispatch(setBoard(board))}
-            >
-              <a>{board.title}</a>
-            </li>
-          ))}
-          <li className="text-red-800" onClick={() => dispatch(createBoard())}>
-            <a className="active">
-              <b>+</b> create new board
-            </a>
-          </li>
-        </ul>
+        <BoardList />
         <DarkToggle />
         <label
           className="btn btn-circle swap swap-rotate"

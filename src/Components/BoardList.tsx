@@ -7,7 +7,7 @@ type Props = {};
 
 const BoardList = (props: Props) => {
   const dispatch = useAppDispatch();
-  const boardsList = useAppSelector((state) => state.board.boards);
+  const boardsList = useAppSelector((state) => state.boards);
 
   return (
     <ul className="flex flex-col gap-3">

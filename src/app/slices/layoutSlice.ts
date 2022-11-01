@@ -9,7 +9,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { Board } from "./boardSlice";
 
 export interface layout {
-  board: Partial<Board>;
+  board: Partial<Board> & { id: number | string; title: string };
   dark: boolean;
 }
 let browser = window.matchMedia("(prefers-color-scheme: dark)");

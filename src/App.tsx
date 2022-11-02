@@ -1,6 +1,5 @@
-import Layout from "./Layout";
-import Navbar from "./Layout/Navbar";
 import BoardView from "./Views/BoardView";
+import Layout from "./layout";
 
 function App() {
   return (

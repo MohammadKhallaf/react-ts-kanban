@@ -1,12 +1,8 @@
-import React from "react";
 import { useAppSelector } from "../app/store";
-import CategoryColumn from "../Components/CategoryColumn";
-import TaskCard from "../Components/TaskCard";
-import Navbar from "../Layout/Navbar";
 
-type Props = {};
+import CategoryColumn from "../components/CategoryColumn";
 
-const BoardView = (props: Props) => {
+const BoardView = () => {
   const categories = useAppSelector((state) => state.categories);
   const renderedCategories = categories.map((category) => (
     <CategoryColumn category={category} key={category.id} />

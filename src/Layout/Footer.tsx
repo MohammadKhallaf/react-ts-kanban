@@ -1,8 +1,4 @@
-import React from "react";
-
-type Props = {};
-
-const Footer = (props: Props) => {
+const Footer = () => {
   return (
     <footer className="footer items-center p-4 bg-neutral text-neutral-content">
       <div className="items-center grid-flow-col">

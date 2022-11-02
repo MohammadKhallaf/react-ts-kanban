@@ -1,16 +1,7 @@
-import React from "react";
-import { createBoard } from "../app/slices/boardSlice";
-import { setBoard } from "../app/slices/layoutSlice";
-import { useAppDispatch, useAppSelector } from "../app/store";
-import BoardList from "../Components/BoardList";
+import BoardList from "../components/BoardList";
 import DarkToggle from "./DarkToggle";
 
-type Props = {};
-
-const Drawer = (props: Props) => {
- 
-  
-
+const Drawer = () => {
   return (
     <aside className="drawer-side">
       <label htmlFor="site-drawer" className="drawer-overlay"></label>

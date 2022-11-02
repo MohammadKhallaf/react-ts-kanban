@@ -1,10 +1,6 @@
-import React from "react";
 import { useAppSelector } from "../app/store";
-import BoardView from "../Views/BoardView";
 
-type Props = {};
-
-const Navbar = (props: Props) => {
+const Navbar = () => {
   const boardTitle = useAppSelector((state) => state.layout.board.title);
 
   return (

@@ -1,10 +1,7 @@
-import React from "react";
-import { toggleDark } from "../app/slices/layoutSlice";
 import { useAppDispatch, useAppSelector } from "../app/store";
+import { toggleDark } from "../app/slices/layoutSlice";
 
-type Props = {};
-
-const DarkToggle = (props: Props) => {
+const DarkToggle = () => {
   const dispatch = useAppDispatch();
   const darkMode = useAppSelector((state) => state.layout.dark);
   return (

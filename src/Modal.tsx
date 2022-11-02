@@ -1,12 +1,10 @@
-import React from "react";
 import { createPortal } from "react-dom";
-import CreateTaskModal from "./Components/CreateTaskModal";
-import TaskModal from "./Components/TaskModal";
 
-type Props = {};
+import CreateTaskModal from "./components/CreateTaskModal";
+import TaskModal from "./components/TaskModal";
 
 const modalRoot = document.getElementById("modal-root") as HTMLElement;
-const Modal = (props: Props) => {
+const Modal = () => {
   return createPortal(
     <>
       <TaskModal />

@@ -1,18 +1,17 @@
 import React from "react";
+import { Category } from "../app/slices/categorySlice";
+import { useAppSelector } from "../app/store";
 import TaskCard from "./TaskCard";
 
-type Props = {};
-
-const CategoryColumn = (props: Props) => {
+const CategoryColumn = ({ category }: { category: Category }) => {
+  const taskList = useAppSelector((state) => state.tasks);
   return (
     <article className="">
-      <h2>title</h2>
+      <h2>{category.title}</h2>
       <div className="flex flex-col gap-5">
-        <TaskCard />
-        <TaskCard />
-        <TaskCard />
-        <TaskCard />
-        <TaskCard />
+        {taskList.map((task) => (
+          <TaskCard task={task} key={task.id} />
+        ))}
       </div>
     </article>
   );

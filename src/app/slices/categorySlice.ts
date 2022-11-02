@@ -7,7 +7,12 @@ export interface Category {
   boardId?: number | string;
   title: string;
 }
-const initialState: Category[] = [{ id: nanoid(), title: "new category" }];
+const initialState: Category[] = [
+  { id: nanoid(), title: "new category" },
+  { id: nanoid(), title: "new category" },
+  { id: nanoid(), title: "new category" },
+  { id: nanoid(), title: "new category" },
+];
 
 export const categorySlice = createSlice({
   name: "category",

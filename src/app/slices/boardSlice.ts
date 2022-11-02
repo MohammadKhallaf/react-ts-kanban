@@ -29,20 +29,23 @@ const initialState: AppState = [
   },
 ];
 
-const newBoard = (title = "newboard") => ({
-  id: nanoid(),
-  title: title,
-  categories: [],
-  createdAt: new Date().toISOString(),
-});
-
 export const boardSlice = createSlice({
   name: "board",
   initialState,
   reducers: {
-    createBoard: (state) => {
-      state.push(newBoard());
+    createBoard: {
+      reducer: (state, action: PayloadAction<Board>) => {
+        state.push(action.payload);
+      },
+      prepare: (title: string = "new board") => ({
+        payload: {
+          id: nanoid(),
+          title: title,
+          createdAt: new Date().toISOString(),
+        },
+      }),
     },
+
     updateBoard: (
       state,
       action: PayloadAction<Partial<Board> & { id: number | string }>

@@ -8,13 +8,15 @@ import App from "./App";
 import Modal from "./Modal";
 
 import "./index.css";
+import { RouterProvider } from "react-router-dom";
+import router from "./app/router";
 
 const appRoot = document.getElementById("app-root") as HTMLElement;
 
 ReactDOM.createRoot(appRoot).render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <RouterProvider router={router} />
       <Modal />
     </Provider>
   </React.StrictMode>

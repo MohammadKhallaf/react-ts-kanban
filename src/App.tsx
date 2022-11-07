@@ -1,11 +1,12 @@
-import BoardView from "./Views/BoardView";
 import Layout from "./layout";
+import { Outlet, RouterProvider } from "react-router-dom";
+import router from "./app/router";
 
 function App() {
   return (
     <Layout>
-      {/* <!-- Page content here --> */}
-      <BoardView />
+      {/* <!-- Page content --> */}
+      <Outlet />
     </Layout>
   );
 }

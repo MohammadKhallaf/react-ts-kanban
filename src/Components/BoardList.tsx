@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import { Board, createBoard, updateBoard } from "../app/slices/boardSlice";
 import { setBoard } from "../app/slices/layoutSlice";
 import { useAppDispatch, useAppSelector } from "../app/store";
@@ -35,16 +36,21 @@ const BoardListItem = ({ board }: { board: Board }) => {
       onClick={() => dispatch(setBoard(board))}
       className="select-none"
     >
-      <input
-        value={board.title}
-        readOnly={readOnly}
-        className="bg-transparent hover:bg-base-200 border border-transparent focus:border-primary read-only:focus:border-transparent focus:caret-primary "
-        onClick={toggleEdit}
-        onChange={(e) => {
-          dispatch(updateBoard({ id: board.id, title: e.currentTarget.value }));
-        }}
-        onBlur={() => setReadOnly(true)}
-      />
+      <NavLink to={`board/${board.id}`}>
+        <input
+          value={board.title}
+          readOnly={readOnly}
+          disabled={readOnly}
+          className="bg-transparent  border border-transparent focus:border-primary read-only:focus:border-transparent focus:caret-primary  "
+          onChange={(e) => {
+            dispatch(
+              updateBoard({ id: board.id, title: e.currentTarget.value })
+            );
+          }}
+          onBlur={() => setReadOnly(true)}
+        />
+        <button onClick={toggleEdit}>edit</button>
+      </NavLink>
     </li>
   );
 };

@@ -5,7 +5,7 @@ const Drawer = () => {
   return (
     <aside className="drawer-side">
       <label htmlFor="site-drawer" className="drawer-overlay"></label>
-      <div className="menu p-4 overflow-y-auto w-64 bg-base-100 text-base-content">
+      <div className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
         {/* Drawer Header */}
         <span className="flex flex-row items-center ">
           <svg

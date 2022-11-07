@@ -18,10 +18,10 @@ export interface Task {
 
 const initialState: Task[] = [
   { id: nanoid(), boardId: 1, categoryId: 1, title: "new task" },
-  { id: nanoid(), boardId: 1, categoryId: 1, title: "new task" },
-  { id: nanoid(), boardId: 1, categoryId: 1, title: "new task" },
-  { id: nanoid(), boardId: 1, categoryId: 1, title: "new task" },
-  { id: nanoid(), boardId: 1, categoryId: 1, title: "new task" },
+  { id: nanoid(), boardId: 1, categoryId: 2, title: "new task" },
+  { id: nanoid(), boardId: 1, categoryId: 3, title: "new task" },
+  { id: nanoid(), boardId: 2, categoryId: 1, title: "new task" },
+  { id: nanoid(), boardId: 2, categoryId: 2, title: "new task" },
 ];
 
 export const taskSlice = createSlice({

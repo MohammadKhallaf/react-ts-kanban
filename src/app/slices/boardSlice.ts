@@ -8,22 +8,26 @@ export interface Board {
   title: string;
   createdAt: String;
 }
+type BoardAction = PayloadAction<Board>;
+type BoardActionWithId = PayloadAction<
+  Partial<Board> & { id: number | string }
+>;
 
 export type AppState = Board[];
 
 const initialState: AppState = [
   {
-    id: nanoid(),
+    id: 1,
     title: "Planning",
     createdAt: new Date().toISOString(),
   },
   {
-    id: nanoid(),
+    id: 2,
     title: "Roadmap",
     createdAt: new Date().toISOString(),
   },
   {
-    id: nanoid(),
+    id: 3,
     title: "Management",
     createdAt: new Date().toISOString(),
   },
@@ -34,7 +38,7 @@ export const boardSlice = createSlice({
   initialState,
   reducers: {
     createBoard: {
-      reducer: (state, action: PayloadAction<Board>) => {
+      reducer: (state, action: BoardAction) => {
         state.push(action.payload);
       },
       prepare: (title: string = "new board") => ({
@@ -45,51 +49,20 @@ export const boardSlice = createSlice({
         },
       }),
     },
-
-    updateBoard: (
-      state,
-      action: PayloadAction<Partial<Board> & { id: number | string }>
-    ) => {
+    updateBoard: (state, action: BoardActionWithId) => {
       const boardIdx = state.findIndex(
         (board) => board.id === action.payload.id
       );
-
       state[boardIdx] = {
         ...state[boardIdx],
         ...action.payload,
       };
     },
+    removeBoard: (state, { payload }: BoardActionWithId) => {
+      state.filter((board) => board.id !== payload.id);
+    },
   },
 });
-// export interface BoardState {
-//   Categories:
-// }
-
-// const initialState: BoardState = {
-//   value: 0,
-// }
-
-// export const counterSlice = createSlice({
-//   name: 'board',
-//   initialState,
-//   reducers: {
-//     increment: (state) => {
-//       // Redux Toolkit allows us to write "mutating" logic in reducers. It
-//       // doesn't actually mutate the state because it uses the Immer library,
-//       // which detects changes to a "draft state" and produces a brand new
-//       // immutable state based off those changes
-//       state.value += 1
-//     },
-//     decrement: (state) => {
-//       state.value -= 1
-//     },
-//     incrementByAmount: (state, action: PayloadAction<number>) => {
-//       state.value += action.payload
-//     },
-//   },
-// })
-
-// // Action creators are generated for each case reducer function
 export const { createBoard, updateBoard } = boardSlice.actions;
 
 export default boardSlice.reducer;

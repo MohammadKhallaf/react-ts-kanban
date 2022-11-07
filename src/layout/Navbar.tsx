@@ -1,10 +1,15 @@
+import { useParams } from "react-router-dom";
 import { useAppSelector } from "../app/store";
-
+import { Helmet } from "react-helmet-async";
 const Navbar = () => {
   const boardTitle = useAppSelector((state) => state.layout.board.title);
 
+  const { boardId } = useParams();
+
   return (
     <div className="w-full navbar bg-base-200">
+      
+      
       <div className="flex-none lg:hidden">
         <label htmlFor="site-drawer" className="btn btn-square btn-ghost">
           <svg

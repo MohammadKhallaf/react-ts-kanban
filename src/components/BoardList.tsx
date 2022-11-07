@@ -41,7 +41,7 @@ const BoardListItem = ({ board }: { board: Board }) => {
           value={board.title}
           readOnly={readOnly}
           disabled={readOnly}
-          className="bg-transparent  border border-transparent focus:border-primary read-only:focus:border-transparent focus:caret-primary  "
+          className="bg-transparent border border-transparent focus:border-primary read-only:focus:border-transparent focus:caret-primary hover:cursor-pointer"
           onChange={(e) => {
             dispatch(
               updateBoard({ id: board.id, title: e.currentTarget.value })

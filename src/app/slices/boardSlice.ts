@@ -43,7 +43,7 @@ export const boardSlice = createSlice({
       },
       prepare: (title: string = "new board") => ({
         payload: {
-          id: nanoid(),
+          id: nanoid(4),
           title: title,
           createdAt: new Date().toISOString(),
         },
@@ -63,6 +63,10 @@ export const boardSlice = createSlice({
     },
   },
 });
+
+
+
+
 export const { createBoard, updateBoard } = boardSlice.actions;
 
 export default boardSlice.reducer;

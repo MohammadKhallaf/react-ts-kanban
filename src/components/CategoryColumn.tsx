@@ -10,7 +10,10 @@ const CategoryColumn = ({ category }: { category: Category }) => {
     (task) => task.categoryId === category.id
   );
   return (
-    <article className="">
+    <article
+      className="min-w-[20rem] dark:bg-slate-700 bg-slate-400 h-fit"
+      style={{ borderRadius: "1rem", padding: "1rem" }}
+    >
       <h2>{category.title}</h2>
       <div className="flex flex-col gap-5">
         {renderedTaskList.map((task) => (

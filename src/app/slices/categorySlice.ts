@@ -1,6 +1,5 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { Task } from "./taskSlice";
 
 export interface Category {
   id: number | string;
@@ -54,5 +53,5 @@ export const categorySlice = createSlice({
     },
   },
 });
-
+export const { createCategory } = categorySlice.actions;
 export default categorySlice.reducer;

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Board, createBoard, updateBoard } from "../app/slices/boardSlice";
-import { setBoard } from "../app/slices/layoutSlice";
 import { useAppDispatch, useAppSelector } from "../app/store";
 
 type Props = {};
@@ -33,7 +32,6 @@ const BoardListItem = ({ board }: { board: Board }) => {
   return (
     <li
       data-id={board.id}
-      onClick={() => dispatch(setBoard(board))}
       className="select-none"
     >
       <NavLink to={`board/${board.id}`}>

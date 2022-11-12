@@ -7,6 +7,8 @@ import CategoryColumn from "../components/CategoryColumn";
 const BoardView = () => {
   const { boardId } = useParams();
   const categories = useAppSelector((state) => state.categories);
+  const boards = useAppSelector((state) => state.boards);
+  const board = boards.find(({ id }) => id === boardId);
 
   const renderedCategories = categories
     .filter((category) => category.boardId == boardId)
@@ -16,6 +18,10 @@ const BoardView = () => {
 
   return (
     <div className="flex flex-row gap-9 justify-start">
+      <Helmet>
+        <title>{board?.title}</title>
+      </Helmet>
+
       {renderedCategories}
       <div className="card bg-base-100 shadow-lg compact min-w-[20rem] max-h-96 mt-5 glass">
         <div className="card-body grid place-items-center">

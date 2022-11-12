@@ -8,7 +8,7 @@ export interface Category {
   title: string;
 }
 const initialState: Category[] = [
-  { id: 1, boardId: 1, title: "new category" },
+  { id: 1, boardId: 1, title: "Category One" },
   { id: 2, boardId: 1, title: "new category" },
   { id: 3, boardId: 1, title: "new category" },
   { id: 4, boardId: 2, title: "new category" },

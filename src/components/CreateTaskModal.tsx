@@ -47,9 +47,9 @@ const CreateTaskModal = (props: Props) => {
                 <span className="label-text">Subtasks</span>
               </label>
               <div className="form-control gap-3">
+                {/* <SubTaskCheckBox />
                 <SubTaskCheckBox />
-                <SubTaskCheckBox />
-                <SubTaskCheckBox />
+                <SubTaskCheckBox /> */}
                 <button className="btn btn-active btn-primary" type="button">
                   Add New Subtask
                 </button>

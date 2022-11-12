@@ -1,11 +1,47 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { createPortal } from "react-dom";
 import ReactDOM from "react-dom/client";
+import { addSubTask, taskSlice } from "../app/slices/taskSlice";
+import { useAppDispatch, useAppSelector } from "../app/store";
 import SubTaskCheckBox from "./SubTaskCheckBox";
 
 type Props = {};
 
 const TaskModal = (props: Props) => {
+  const dispatch = useAppDispatch();
+  const modalState = useAppSelector((state) => state.modal);
+  const tasks = useAppSelector((state) => state.tasks);
+  const categories = useAppSelector((state) => state.categories);
+  const currentTask = tasks.find((task) => task.id === modalState.taskId);
+  const renderedSubTasks = currentTask?.subtasks?.map((sub) => (
+    <SubTaskCheckBox key={sub.id} subTask={sub} taskId={currentTask.id} />
+  ));
+  const renderedCategories = categories
+    .filter((cat) => cat.boardId === modalState.boardId)
+    .map((category) => {
+      if (category.id === modalState.categoryId) {
+        return (
+          <option key={category.id} value={category.id}>
+            {category.title}
+          </option>
+        );
+      } else {
+        return (
+          <option key={category.id} value={category.id}>
+            {category.title}
+          </option>
+        );
+      }
+    });
+
+  const categoryChangehandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    dispatch(
+      taskSlice.actions.updateTask({
+        id: modalState.taskId,
+        categoryId: +e.target.value,
+      })
+    );
+  };
   return (
     <>
       <input type="checkbox" id="task-modal" className="modal-toggle" />
@@ -18,38 +54,37 @@ const TaskModal = (props: Props) => {
             ✕
           </label>
 
-          <h3 className="font-bold text-lg">Task Title!</h3>
-          <p className="py-4">Task Description</p>
+          <h3 className="font-bold text-lg">{currentTask?.title}</h3>
+          <p className="py-4">{currentTask?.description}</p>
 
-          <form
-            action="
-            "
-            className="flex flex-col gap-2"
-          >
+          <form action="" className="flex flex-col gap-2">
             <label className="label">
               <span className="label-text">Subtasks</span>
             </label>
-            <SubTaskCheckBox />
-            <SubTaskCheckBox />
-            <SubTaskCheckBox />
-            <SubTaskCheckBox />
+            <div className="max-h-[300px] flex flex-col gap-2 overflow-y-auto">
+              {renderedSubTasks}
+            </div>
+            <button
+              className="btn"
+              type="button"
+              onClick={() =>
+                dispatch(addSubTask({ id: currentTask?.id || "NULL" }))
+              }
+            >
+              Add new subtask
+            </button>
           </form>
           <form action="">
             <div className="form-control w-full max-w-xs">
               <label className="label">
-                <span className="label-text">Status</span>
+                <span className="label-text">Category</span>
               </label>
               <select
                 className="select select-primary w-full max-w-xs"
-                defaultValue="1"
+                defaultValue={modalState.categoryId}
+                onChange={categoryChangehandler}
               >
-                <option disabled value="1">
-                  What is the best TV show?
-                </option>
-                <option>Game of Thrones</option>
-                <option>Lost</option>
-                <option>Breaking Bad</option>
-                <option>Walking Dead</option>
+                {renderedCategories}
               </select>
             </div>
           </form>

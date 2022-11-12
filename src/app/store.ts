@@ -3,6 +3,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import boardReducer from "./slices/boardSlice";
 import categoryReducer from "./slices/categorySlice";
 import layoutReducer from "./slices/layoutSlice";
+import modalReducer from "./slices/modalSlice";
 import taskReducer from "./slices/taskSlice";
 
 export const store = configureStore({
@@ -11,6 +12,7 @@ export const store = configureStore({
     categories: categoryReducer,
     tasks: taskReducer,
     layout: layoutReducer,
+    modal: modalReducer,
   },
 });
 

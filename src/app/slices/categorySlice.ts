@@ -51,7 +51,9 @@ export const categorySlice = createSlice({
     removeCategory: (state, { payload }) => {
       state.filter((category) => category.id !== payload.id);
     },
+    removeBoardCategories: (state, { payload }) =>
+      state.filter((category) => category.boardId !== payload.boardId),
   },
 });
-export const { createCategory } = categorySlice.actions;
+export const { createCategory, removeBoardCategories } = categorySlice.actions;
 export default categorySlice.reducer;

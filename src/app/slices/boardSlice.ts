@@ -1,7 +1,6 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { Task } from "./taskSlice";
-import { Category } from "./categorySlice";
+
 
 export interface Board {
   id: number | string;
@@ -57,16 +56,14 @@ export const boardSlice = createSlice({
         ...state[boardIdx],
         ...action.payload,
       };
+      return state;
     },
     removeBoard: (state, { payload }: BoardActionWithId) => {
-      state.filter((board) => board.id !== payload.id);
+      return state.filter((board) => board.id !== payload.id);
     },
   },
 });
 
-
-
-
-export const { createBoard, updateBoard } = boardSlice.actions;
+export const { createBoard, updateBoard, removeBoard } = boardSlice.actions;
 
 export default boardSlice.reducer;

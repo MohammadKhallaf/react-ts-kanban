@@ -80,6 +80,8 @@ export const taskSlice = createSlice({
     removeTask: (state, { payload }) => {
       state.filter((task) => task.id !== payload.id);
     },
+    removeBoardTasks: (state, { payload }) =>
+      state.filter((task) => task.boardId !== payload.boardId),
     addSubTask: (
       state,
       action: PayloadAction<Partial<Task> & { id: number | string }>
@@ -123,5 +125,6 @@ export const taskSlice = createSlice({
     },
   },
 });
-export const { addSubTask, updateSubTask } = taskSlice.actions;
+export const { addSubTask, updateSubTask, removeBoardTasks } =
+  taskSlice.actions;
 export default taskSlice.reducer;

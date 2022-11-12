@@ -18,11 +18,11 @@ ReactDOM.createRoot(appRoot).render(
     <Provider store={store}>
       <HelmetProvider>
         <Helmet>
-          <title>Kanban</title>
+          <title>Notella</title>
         </Helmet>
         <RouterProvider router={router} />
+        <Modal />
       </HelmetProvider>
-      <Modal />
     </Provider>
   </React.StrictMode>
 );

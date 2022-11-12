@@ -1,4 +1,3 @@
-import React from "react";
 import { setModal } from "../app/slices/modalSlice";
 import { Task } from "../app/slices/taskSlice";
 import { useAppDispatch } from "../app/store";

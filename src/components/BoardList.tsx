@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Board, createBoard, updateBoard } from "../app/slices/boardSlice";
 import { useAppDispatch, useAppSelector } from "../app/store";
@@ -10,18 +10,20 @@ const BoardList = (props: Props) => {
   const boardsList = useAppSelector((state) => state.boards);
 
   return (
-    <ul className="flex flex-col gap-3">
-      {/* <!-- Sidebar content here --> */}
-      <li>All Boards ({boardsList.length})</li>
-      {boardsList.map((board) => (
-        <BoardListItem board={board} key={board.id} />
-      ))}
-      <li className="text-red-800" onClick={() => dispatch(createBoard())}>
+    <div>
+      <p className="text-lg font-semibold">All Boards ({boardsList.length})</p>
+      <ul className="flex flex-col gap-3 max-h-[50vh] overflow-y-auto">
+        {/* <!-- Sidebar content here --> */}
+        {boardsList.map((board) => (
+          <BoardListItem board={board} key={board.id} />
+        ))}
+      </ul>
+      <li className="text-red-800 mt-5" onClick={() => dispatch(createBoard())}>
         <a className="active">
           <b>+</b> create new board
         </a>
       </li>
-    </ul>
+    </div>
   );
 };
 
@@ -30,10 +32,7 @@ const BoardListItem = ({ board }: { board: Board }) => {
   const [readOnly, setReadOnly] = useState(true);
   const toggleEdit = () => setReadOnly((state) => !state);
   return (
-    <li
-      data-id={board.id}
-      className="select-none"
-    >
+    <li data-id={board.id} className="select-none">
       <NavLink to={`board/${board.id}`}>
         <input
           value={board.title}

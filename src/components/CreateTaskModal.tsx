@@ -1,8 +1,3 @@
-import React from "react";
-import { createPortal } from "react-dom";
-import ReactDOM from "react-dom/client";
-import SubTaskCheckBox from "./SubTaskCheckBox";
-
 type Props = {};
 
 const CreateTaskModal = (props: Props) => {

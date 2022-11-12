@@ -11,7 +11,7 @@ const BoardView = () => {
   const { boardId } = useParams();
   const dispatch = useAppDispatch();
   const categories = useAppSelector((state) => state.categories);
-  const layout = useAppSelector((state) => state.layout);
+  // const layout = useAppSelector((state) => state.layout);
   const boards = useAppSelector((state) => state.boards);
   const board = boards.find(({ id }) => id.toString() === boardId?.toString());
   useEffect(() => {
@@ -38,7 +38,9 @@ const BoardView = () => {
         onClick={newCategoryBtnHandler}
       >
         <div className="card-body grid place-items-center">
-          <h1 className="text-xl font-bold">New Category</h1>
+          <h1 className="text-xl font-bold text-slate-800 dark:text-slate-300">
+            New Category
+          </h1>
         </div>
       </button>
     </div>

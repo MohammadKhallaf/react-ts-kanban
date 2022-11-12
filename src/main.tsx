@@ -4,7 +4,6 @@ import { Provider } from "react-redux";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { store } from "./app/store";
 
-import App from "./App";
 import Modal from "./Modal";
 
 import "./index.css";

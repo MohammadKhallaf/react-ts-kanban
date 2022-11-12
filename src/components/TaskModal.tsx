@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
-import { createPortal } from "react-dom";
-import ReactDOM from "react-dom/client";
+import React from "react";
 import { addSubTask, taskSlice } from "../app/slices/taskSlice";
 import { useAppDispatch, useAppSelector } from "../app/store";
 import SubTaskCheckBox from "./SubTaskCheckBox";
